@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compact Keyboard Tester</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        padding: 10px;
+    }
+
+    .container {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        width: 1200px;        /* smaller */
+        margin: auto;
+    }
+
+    textarea {
+        width: 94%;
+        height: 35px;       /* smaller */
+        padding: 6px;
+        font-size: 14px;    /* smaller */
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        outline: none;
+    }
+
+    button {
+        padding: 4px 10px;  /* smaller */
+        border: 1px solid #777;
+        border-radius: 6px;
+        background: #eee;
+        cursor: pointer;
+        font-size: 13px;
+    }
+    button:hover { background: #ddd; }
+
+    .keyboard {
+        margin-top: 15px;
+    }
+
+    .row {
+        margin: 4px 0;      /* tighter rows */
+        display: flex;
+        gap: 4px;
+    }
+
+    .key {
+        background: #fafafa;
+        border: 1px solid #999;
+        border-radius: 5px;
+        padding: 6px;       /* smaller */
+        width: 40px;        /* smaller keys */
+        text-align: center;
+        font-size: 13px;    /* smaller text */
+        user-select: none;
+        transition: 0.1s;
+    }
+
+    .key.active {
+        background: #4da3ff;
+        color: white;
+        border-color: #0070e7;
+        transform: scale(1.05);
+    }
+
+    /* Special sizes */
+    .wide1 { width: 60px; }
+    .wide2 { width: 80px; }
+    .space { width: 220px; }  /* smaller spacebar */
+</style>
+</head>
+<body>
+
+<div class="container">
+    <textarea placeholder="Type here..." id="input"></textarea>
+    <button onclick="document.getElementById('input').value=''">Reset</button>
+
+<div class="keyboard" style="display:flex; justify-content:space-between;">
+
+    <!-- LEFT SECTION (Main Keyboard) -->
+    <div>
+
+        <!-- FUNCTION KEYS -->
+        <div class="row">
+            <div class="key" id="Escape">Esc</div>
+            <div class="key" id="F1">F1</div><div class="key" id="F2">F2</div>
+            <div class="key" id="F3">F3</div><div class="key" id="F4">F4</div>
+            <div class="key" id="F5">F5</div><div class="key" id="F6">F6</div>
+            <div class="key" id="F7">F7</div><div class="key" id="F8">F8</div>
+            <div class="key" id="F9">F9</div><div class="key" id="F10">F10</div>
+            <div class="key" id="F11">F11</div><div class="key" id="F12">F12</div>
+        </div>
+
+        <!-- NUMBER ROW -->
+        <div class="row">
+            <div class="key" id="Backquote">~</div>
+            <div class="key" id="Digit1">1</div><div class="key" id="Digit2">2</div>
+            <div class="key" id="Digit3">3</div><div class="key" id="Digit4">4</div>
+            <div class="key" id="Digit5">5</div><div class="key" id="Digit6">6</div>
+            <div class="key" id="Digit7">7</div><div class="key" id="Digit8">8</div>
+            <div class="key" id="Digit9">9</div><div class="key" id="Digit0">0</div>
+            <div class="key" id="Minus">-</div><div class="key" id="Equal">+</div>
+            <div class="key wide1" id="Backspace">Bksp</div>
+        </div>
+
+        <!-- QWERTY -->
+        <div class="row">
+            <div class="key wide1" id="Tab">Tab</div>
+            <div class="key" id="KeyQ">Q</div><div class="key" id="KeyW">W</div>
+            <div class="key" id="KeyE">E</div><div class="key" id="KeyR">R</div>
+            <div class="key" id="KeyT">T</div><div class="key" id="KeyY">Y</div>
+            <div class="key" id="KeyU">U</div><div class="key" id="KeyI">I</div>
+            <div class="key" id="KeyO">O</div><div class="key" id="KeyP">P</div>
+            <div class="key" id="BracketLeft">{</div>
+            <div class="key" id="BracketRight">}</div>
+            <div class="key" id="Backslash">\</div>
+        </div>
+
+        <!-- ASDF -->
+        <div class="row">
+            <div class="key wide1" id="CapsLock">Caps</div>
+            <div class="key" id="KeyA">A</div><div class="key" id="KeyS">S</div>
+            <div class="key" id="KeyD">D</div><div class="key" id="KeyF">F</div>
+            <div class="key" id="KeyG">G</div><div class="key" id="KeyH">H</div>
+            <div class="key" id="KeyJ">J</div><div class="key" id="KeyK">K</div>
+            <div class="key" id="KeyL">L</div>
+            <div class="key" id="Semicolon">;</div>
+            <div class="key" id="Quote">'</div>
+            <div class="key wide1" id="Enter">Enter</div>
+        </div>
+
+        <!-- ZXCV -->
+        <div class="row">
+            <div class="key wide1" id="ShiftLeft">Shift</div>
+            <div class="key" id="KeyZ">Z</div><div class="key" id="KeyX">X</div>
+            <div class="key" id="KeyC">C</div><div class="key" id="KeyV">V</div>
+            <div class="key" id="KeyB">B</div><div class="key" id="KeyN">N</div>
+            <div class="key" id="KeyM">M</div>
+            <div class="key" id="Comma">,</div><div class="key" id="Period">.</div>
+            <div class="key" id="Slash">/</div>
+            <div class="key wide1" id="ShiftRight">Shift</div>
+        </div>
+
+        <!-- CONTROL -->
+        <div class="row">
+            <div class="key" id="ControlLeft">Ctrl</div>
+            <div class="key" id="MetaLeft">Win</div>
+            <div class="key" id="AltLeft">Alt</div>
+            <div class="key space" id="Space">Space</div>
+            <div class="key" id="AltRight">Alt</div>
+            <div class="key" id="MetaRight">Win</div>
+            <div class="key" id="ContextMenu">Sel</div>
+            <div class="key" id="ControlRight">Ctrl</div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SECTION (Nav + Numpad) -->
+    <div>
+
+        <!-- Top -->
+        <div class="row">
+            <div class="key" id="PrintScreen">Prt</div>
+            <div class="key" id="ScrollLock">ScrLk</div>
+            <div class="key" id="Pause">Pause</div>
+        </div>
+
+        <div class="row">
+            <div class="key" id="Insert">Ins</div>
+            <div class="key" id="Home">Home</div>
+            <div class="key" id="PageUp">PgUp</div>
+        </div>
+
+        <div class="row">
+            <div class="key" id="Delete">Del</div>
+            <div class="key" id="End">End</div>
+            <div class="key" id="PageDown">PgDn</div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="row" style="justify-content:center;">
+            <div class="key" id="ArrowUp">↑</div>
+        </div>
+
+        <div class="row">
+            <div class="key" id="ArrowLeft">←</div>
+            <div class="key" id="ArrowDown">↓</div>
+            <div class="key" id="ArrowRight">→</div>
+        </div>
+
+        <!-- Numpad -->
+        <div class="row">
+            <div class="key" id="NumLock">Num</div>
+            <div class="key" id="NumpadDivide">/</div>
+            <div class="key" id="NumpadMultiply">*</div>
+            <div class="key" id="NumpadSubtract">-</div>
+        </div>
+
+        <div class="row">
+            <div class="key" id="Numpad7">7</div>
+            <div class="key" id="Numpad8">8</div>
+            <div class="key" id="Numpad9">9</div>
+            <div class="key" id="NumpadAdd">+</div>
+        </div>
+
+        <div class="row">
+            <div class="key" id="Numpad4">4</div>
+            <div class="key" id="Numpad5">5</div>
+            <div class="key" id="Numpad6">6</div>
+        </div>
+
+        <div class="row">
+            <div class="key" id="Numpad1">1</div>
+            <div class="key" id="Numpad2">2</div>
+            <div class="key" id="Numpad3">3</div>
+            <div class="key" id="NumpadEnter">Ent</div>
+        </div>
+
+        <div class="row">
+            <div class="key wide1" id="Numpad0">0</div>
+            <div class="key" id="NumpadDecimal">.</div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+document.addEventListener("keydown", e => {
+    const key = document.getElementById(e.code);
+    if (key) key.classList.add("active");
+});
+document.addEventListener("keyup", e => {
+    const key = document.getElementById(e.code);
+    if (key) key.classList.remove("active");
+});
+</script>
+
+</body>
+</html>
